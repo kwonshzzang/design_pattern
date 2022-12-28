@@ -4,26 +4,30 @@ import kr.co.kwonshzzang.designpattern.factorymethod.ex01.framework.Factory;
 import kr.co.kwonshzzang.designpattern.factorymethod.ex01.framework.Product;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class IDCardFactory extends Factory  {
-    private List<String> owners;
+    private Map<Integer, String> database;
+    public static int serial = 100;
 
     public IDCardFactory() {
-        owners = new ArrayList<>();
+        database = new HashMap<>();
     }
 
     @Override
-    protected Product createProduct(String owner) {
-        return new IDCard(owner);
+    protected synchronized Product createProduct(String owner) {
+        return new IDCard(owner, serial++);
     }
 
     @Override
     protected void registerProduct(Product product) {
-        owners.add(((IDCard)product).getOwner());
+        IDCard card = (IDCard)product;
+        database.put(card.getSerial(), card.getOwner());
     }
 
-    public List<String> getOwners() {
-        return owners;
+    public Map<Integer, String> getDatabase() {
+        return database;
     }
 }
