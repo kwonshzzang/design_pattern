@@ -1,4 +1,4 @@
-package kr.co.kwonshzzang.designpattern.singleton;
+package kr.co.kwonshzzang.designpattern.singleton.ex02;
 
 public class SocketClient {
     private static SocketClient socketClient = new SocketClient();

@@ -1,14 +1,13 @@
-package kr.co.kwonshzzang.designpattern.singleton;
+package kr.co.kwonshzzang.designpattern.singleton.ex02;
 
-public class ACls {
+public class BCls {
     private SocketClient socketClient;
 
-    public ACls() {
+    public BCls() {
         socketClient = SocketClient.getInstance();
     }
 
     public SocketClient getSocketClient() {
         return this.socketClient;
     }
-
 }
